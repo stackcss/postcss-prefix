@@ -1,0 +1,13 @@
+:root {
+  --color-red: #f00;
+  --color-blue: #00f;
+}
+
+h1 {}
+h1.title {}
+h2#thing {}
+#thing h3 {}
+
+@media screen and (max-width: 42rem) {
+  #another .thing > x-here {}
+}

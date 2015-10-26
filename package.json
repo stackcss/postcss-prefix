@@ -1,0 +1,10 @@
+{
+  "name": "postcss-prefix",
+  "version": "1.0.0",
+  "dependencies": {
+    "postcss": "^5.0.8"
+  },
+  "devDependencies": {
+    "tape": "^4.2.1"
+  }
+}

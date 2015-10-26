@@ -1,0 +1,13 @@
+:root {
+  --color-red: #f00;
+  --color-blue: #00f;
+}
+
+#hello-world h1 {}
+#hello-world h1.title {}
+#hello-world h2#thing {}
+#hello-world #thing h3 {}
+
+@media screen and (max-width: 42rem) {
+  #hello-world #another .thing > x-here {}
+}
