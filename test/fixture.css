@@ -1,6 +1,13 @@
 :root {
   --color-red: #f00;
+}
+
+:root a {
   --color-blue: #00f;
+}
+
+:root ul, :root li {
+  --color-green: #0f0;
 }
 
 h1 {}

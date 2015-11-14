@@ -7,8 +7,11 @@ function postcssPrefix (prefix, options) {
 
   return function (root) {
     root.walkRules(function (rule) {
-      if (rule.selector === ':root') return
-      rule.selector = prefix + rule.selector
+      rule.selectors = rule.selectors.map(function (selector) {
+        if (rule.selector.indexOf(':root') === 0) return selector
+        return prefix + selector
+      })
+      rule.selector = rule.selectors.join(', ')
     })
   }
 }
