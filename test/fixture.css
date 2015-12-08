@@ -10,6 +10,9 @@
   --color-green: #0f0;
 }
 
+:host { color: green; }
+:host(:hover) { color: blue; }
+
 h1 {}
 h1.title {}
 h2#thing {}

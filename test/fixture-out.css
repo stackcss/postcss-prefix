@@ -10,6 +10,9 @@
   --color-green: #0f0;
 }
 
+#hello-world { color: green; }
+#hello-world:hover { color: blue; }
+
 #hello-world h1 {}
 #hello-world h1.title {}
 #hello-world h2#thing {}
