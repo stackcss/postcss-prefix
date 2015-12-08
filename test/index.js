@@ -8,7 +8,7 @@ test('postcss-prefix', function (t) {
   const expected = fs.readFileSync(path.join(__dirname, 'fixture-out.css'), 'utf8')
   const css = fs.readFileSync(path.join(__dirname, 'fixture.css'), 'utf8')
   const out = postcss()
-    .use(prefix('#hello-world '))
+    .use(prefix('#hello-world'))
     .process(css)
     .toString()
 
