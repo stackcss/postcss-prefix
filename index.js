@@ -49,7 +49,6 @@ function postcssPrefix (prefix, options) {
       selector.parent.prepend(prefixNode)
     })
   }
-
 }
 
 function getPrefixNode (prefix) {
@@ -58,8 +57,8 @@ function getPrefixNode (prefix) {
 
   switch (sigil) {
     case '#':
-      return Selector.id({ value })
+      return Selector.id({ value: value })
     case '.':
-      return Selector.className({ value })
+      return Selector.className({ value: value })
   }
 }
