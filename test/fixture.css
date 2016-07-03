@@ -23,3 +23,13 @@ h2#thing {}
 @media screen and (max-width: 42rem) {
   #another .thing > x-here {}
 }
+
+.stuff:nth-child(even) {}
+
+.stuff:nth-last-child(even) {}
+
+.stuff:nth-of-type(2) {}
+
+.stuff:nth-last-of-type(2) {}
+
+.stuff:not(p) {}
