@@ -22,7 +22,9 @@ function postcssPrefix (prefix, options) {
         // if parent is not selector and
         selector.parent.type !== 'selector' ||
         // if not first node in container
-        selector.parent.nodes[0] !== selector
+        selector.parent.nodes[0] !== selector ||
+        // don't prefix pseudo selector args unless it's `:not`
+        (selector.parent.parent.type === 'pseudo' && selector.parent.parent.value !== ':not')
       ) return
 
       const prefixNode = getPrefixNode(prefix)

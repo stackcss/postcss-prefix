@@ -23,3 +23,13 @@
 @media screen and (max-width: 42rem) {
   #hello-world #another .thing > x-here {}
 }
+
+#hello-world .stuff:nth-child(even) {}
+
+#hello-world .stuff:nth-last-child(even) {}
+
+#hello-world .stuff:nth-of-type(2) {}
+
+#hello-world .stuff:nth-last-of-type(2) {}
+
+#hello-world .stuff:not(#hello-world p) {}
