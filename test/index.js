@@ -12,6 +12,17 @@ test('postcss-prefix', function (t) {
     .process(css)
     .toString()
 
-  t.equal(expected, out, 'output is as expected')
+  t.equal(out, expected, 'output is as expected')
+  t.end()
+})
+
+test('postcss-prefix: keyframes ignored', function (t) {
+  const css = fs.readFileSync(path.join(__dirname, 'keyframe.css'), 'utf8')
+  const out = postcss()
+    .use(prefix('#key'))
+    .process(css)
+    .toString()
+
+  t.equal(out, css, 'keyframes are not prefixed')
   t.end()
 })

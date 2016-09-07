@@ -8,6 +8,11 @@ function postcssPrefix (prefix, options) {
 
   return function (root) {
     root.walkRules(function (rule) {
+      if (rule.parent && rule.parent.type === 'atrule' &&
+          rule.parent.name.indexOf('keyframes') !== -1) {
+        return
+      }
+
       const selector = Selector(
         transformSelectors
       ).process(rule.selector).result
