@@ -13,23 +13,26 @@
 #hello-world { color: green; }
 #hello-world:hover { color: blue; }
 
-#hello-world h1 {}
-#hello-world h1.title {}
-#hello-world h2#thing {}
-#hello-world #thing h3 {}
+h1 {}
+h1.title {}
+h2#thing {}
+#thing h3 {}
 
-#hello-world .a, #hello-world .b, #hello-world .c {}
+.a, .b, .c {}
 
 @media screen and (max-width: 42rem) {
-  #hello-world #another .thing > x-here {}
+  #hello-world {
+    .thing > x-here {}
+  }
+  #another .thing > x-here {}
 }
 
-#hello-world .stuff:nth-child(even) {}
+.stuff:nth-child(even) {}
 
-#hello-world .stuff:nth-last-child(even) {}
+.stuff:nth-last-child(even) {}
 
-#hello-world .stuff:nth-of-type(2) {}
+.stuff:nth-of-type(2) {}
 
-#hello-world .stuff:nth-last-of-type(2) {}
+.stuff:nth-last-of-type(2) {}
 
-#hello-world .stuff:not(#hello-world p) {}
+.stuff:not(p) {}
