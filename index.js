@@ -6,16 +6,10 @@ module.exports = postcss.plugin('postcss-prefix', postcssPrefix)
 function postcssPrefix (prefix, options) {
   options = options || {}
 
-  return function (root) {
+  return function walk (root) {
     root.walkRules(function (rule) {
-      if (rule.parent && rule.parent.type === 'atrule' &&
-          rule.parent.name.indexOf('keyframes') !== -1) {
-        return
-      }
-
-      const selector = Selector(
-        transformSelectors
-      ).process(rule.selector).result
+      const selector = Selector(transformSelectors)
+        .process(rule.selector).result
 
       rule.selector = selector
     })
@@ -23,37 +17,23 @@ function postcssPrefix (prefix, options) {
 
   function transformSelectors (selectors) {
     selectors.eachInside(function (selector) {
-      if (
-        // if parent is not selector and
-        selector.parent.type !== 'selector' ||
-        // if not first node in container
-        selector.parent.nodes[0] !== selector ||
-        // don't prefix pseudo selector args unless it's `:not`
-        (selector.parent.parent.type === 'pseudo' && selector.parent.parent.value !== ':not')
-      ) return
+      // don't prefix if parent is not selector
+      if (selector.parent.type !== 'selector') return
 
-      const prefixNode = getPrefixNode(prefix)
+      // don't prefix if not first node in container
+      if (selector.parent.nodes[0] !== selector) return
 
-      if (selector.type === 'pseudo') {
-        switch (selector.value) {
-          case ':root':
-            return
-          case ':host':
-            const replacement = Selector.selector()
-            replacement.nodes = [prefixNode].concat(selector.clone().nodes)
-            selector.replaceWith(replacement)
-            return
-        }
+      // don't prefix pseudo selector args unless it's `:not`
+      if (selector.parent.parent.type === 'pseudo' && selector.parent.parent.value !== ':not') {
+        return
       }
 
-      // prefix
-      //
-      // start by prepending a space combinator
-      selector.parent.prepend(Selector.combinator({ value: ' ' }))
-      // then prepend the prefix node, preserving spacing
-      prefixNode.spaces.before = selector.spaces.before
-      selector.spaces.before = ''
-      selector.parent.prepend(prefixNode)
+      if (selector.type === 'pseudo' && selector.value === ':host') {
+        const prefixNode = getPrefixNode(prefix)
+        const replacement = Selector.selector()
+        replacement.nodes = [prefixNode].concat(selector.clone().nodes)
+        selector.replaceWith(replacement)
+      }
     })
   }
 }
