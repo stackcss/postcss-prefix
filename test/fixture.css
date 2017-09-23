@@ -13,6 +13,8 @@
 :host { color: green; }
 :host(:hover) { color: blue; }
 
+:host-context(.test) { color: red; }
+
 h1 {}
 h1.title {}
 h2#thing {}

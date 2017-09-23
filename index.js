@@ -33,6 +33,12 @@ function postcssPrefix (prefix, options) {
         const replacement = Selector.selector()
         replacement.nodes = [prefixNode].concat(selector.clone().nodes)
         selector.replaceWith(replacement)
+      } else if (selector.type === 'pseudo' && selector.value === ':host-context') {
+        const prefixNode = getPrefixNode(prefix)
+        const replacement = Selector.selector()
+        const prevNodes = selector.clone().nodes
+        replacement.nodes = prevNodes.concat(' ', prefixNode, ', ', prefixNode, prevNodes)
+        selector.replaceWith(replacement)
       }
     })
   }
