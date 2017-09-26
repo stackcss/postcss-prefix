@@ -13,6 +13,10 @@
 #hello-world { color: green; }
 #hello-world:hover { color: blue; }
 
+#hello-world.test { color: aqua; }
+
+.test #hello-world, #hello-world.test { color: red; }
+
 h1 {}
 h1.title {}
 h2#thing {}
