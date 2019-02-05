@@ -1,6 +1,6 @@
 {
   "name": "postcss-prefix",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "license": "MIT",
   "repository": "stackcss/postcss-prefix",
   "dependencies": {
