@@ -40,3 +40,8 @@ h2#thing {}
 .stuff:nth-last-of-type(2) {}
 
 .stuff:not(p) {}
+
+.sub :host {}
+.sub:not(:host x) {}
+.sub:not(x :host y) {}
+.sub:host:not(a:host) {}

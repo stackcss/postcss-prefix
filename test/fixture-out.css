@@ -40,3 +40,8 @@ h2#thing {}
 .stuff:nth-last-of-type(2) {}
 
 .stuff:not(p) {}
+
+.sub #hello-world {}
+.sub:not(#hello-world x) {}
+.sub:not(x #hello-world y) {}
+.sub#hello-world:not(a#hello-world) {}
