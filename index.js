@@ -11,14 +11,13 @@ function postcssPrefix (prefix, options) {
   return function walk (root) {
     root.walkRules(function (rule) {
       const selector = Selector(transformSelectors)
-        .process(rule.selector).result
-
+        .processSync(rule.selector)
       rule.selector = selector
     })
   }
 
   function transformSelectors (selectors) {
-    selectors.eachInside(function (selector) {
+    selectors.walk(function (selector) {
       // don't prefix if parent is not selector
       if (selector.parent.type !== 'selector') return
 
