@@ -11,8 +11,7 @@ const css = `
   .hello { color: black }
 `
 
-const newCss = postcss()
-  .use(prefix('#hello-world'))
+const newCss = postcss([ prefix('#hello-world') ])
   .process(css)
   .toString()
 
