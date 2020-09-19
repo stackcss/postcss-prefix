@@ -1,16 +1,21 @@
 {
   "name": "postcss-prefix",
+  "description": "Replace `:host` elements with a prefix of your choosing",
   "version": "2.2.0",
-  "license": "MIT",
-  "repository": "stackcss/postcss-prefix",
+  "author": "Hugh Kennedy <hughskennedy@gmail.com>",
+  "bugs": "https://github.com/stackcss/postcss-prefix/issues",
+  "dependencies": {
+    "postcss-selector-parser": "^6.0.2"
+  },
   "devDependencies": {
     "postcss": "^8.0.5",
     "tape": "^5.0.1"
   },
+  "homepage": "https://github.com/stackcss/postcss-prefix",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": "stackcss/postcss-prefix",
   "scripts": {
     "test": "tape test/index.js"
-  },
-  "dependencies": {
-    "postcss-selector-parser": "^6.0.2"
   }
 }
