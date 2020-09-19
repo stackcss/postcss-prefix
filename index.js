@@ -3,17 +3,19 @@
 const postcss = require('postcss')
 const Selector = require('postcss-selector-parser')
 
-module.exports = postcss.plugin('postcss-prefix', postcssPrefix)
+module.exports = postcssPrefix
+postcssPrefix.postcss = true
 
 function postcssPrefix (prefix, options) {
   options = options || {}
 
-  return function walk (root) {
-    root.walkRules(function (rule) {
+  return {
+    postcssPlugin: 'postcss-prefix',
+    Rule: function (rule) {
       const selector = Selector(transformSelectors)
         .processSync(rule.selector)
       rule.selector = selector
-    })
+    }
   }
 
   function transformSelectors (selectors) {
